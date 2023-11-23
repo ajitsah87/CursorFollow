@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      span {
+        width: 30px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: crimson;
+        display: block;
+        /* filter: blur(2rem); */
+      }
+    </style>
+  </head>
+  <body>
+    <span id="pointer" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+      const pointer = document.querySelector("#pointer");
+      window.addEventListener("mousemove", (e) => {
+        const { width, height } = pointer.getBoundingClientRect();
+        const x = e.clientX - width / 2;
+        const y = e.clientY - width / 2;
+        gsap.to(pointer, {  x,y , duration:1 ,ease :"elastic.out(1 ,0.8)" });
+        // pointer.style.transform = `translate(${x}px, ${y}px)`
+      });
+    </script>
+  </body>
+</html>
